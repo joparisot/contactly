@@ -1,0 +1,16 @@
+<%= @contact.first_name %>
+<%= @contact.last_name %>
+<%= @contact.phone_number %>
+<%= @contact.email %>
+
+<ul>
+  <% @contact.comments.each do |comment| %>
+    <li><p><%= comment.content %> at <%= comment.created_at %></p></li>
+  <% end %>
+</ul>
+
+<%= simple_form_for [@contact, @comment] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :content %>
+  <%= f.submit "Create new comment", class: "btn btn-primary" %>
+<% end %>
