@@ -1,0 +1,8 @@
+<%= form_tag(contacts_path, method: :get) do %>
+  <%= text_field_tag :query %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% @contacts.each do |contact| %>
+  <p><%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact) %></p>
+<% end %>

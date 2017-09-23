@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contacts = Contact.all
+    @contacts = current_user.contacts.where("first_name ILIKE ?", "%#{params[:query]}%")
   end
 
   def show
